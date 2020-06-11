@@ -27,21 +27,23 @@ async function run() {
 
     let message = data.substr(data.indexOf(" ") + 1);
     console.log("MESSAGE pre-JSON:", message);
-    message = JSON.parse(message);
+    if (!message && !message.keys.length) {
+      message = JSON.parse(message);
 
-    const t = data.substr(0, data.indexOf(" "));
-    if (t == "SERVER" && Object.keys(message).includes("temperature")) {
-      console.log("TOPIC:", topic.toString());
-      console.log("MESSAGE:", message);
-      const { temperature, room_id } = message;
-      knex("temps")
-        .insert({ temp: temperature, room_id })
-        .then(() => {
-          console.log("INSERTED INTO DB");
-        })
-        .catch((err) => {
-          console.error("ERROR:", err);
-        });
+      const t = data.substr(0, data.indexOf(" "));
+      if (t == "SERVER" && Object.keys(message).includes("temperature")) {
+        console.log("TOPIC:", topic.toString());
+        console.log("MESSAGE:", message);
+        const { temperature, room_id } = message;
+        knex("temps")
+          .insert({ temp: temperature, room_id })
+          .then(() => {
+            console.log("INSERTED INTO DB");
+          })
+          .catch((err) => {
+            console.error("ERROR:", err);
+          });
+      }
     }
   }
 }
