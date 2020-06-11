@@ -24,7 +24,11 @@ async function run() {
 
   for await (const [topic, msg] of sock) {
     const data = topic.toString();
-    const message = JSON.parse(data.substr(data.indexOf(" ") + 1));
+
+    let message = data.substr(data.indexOf(" ") + 1);
+    console.log("MESSAGE pre-JSON:", message);
+    message = JSON.parse(message);
+
     const t = data.substr(0, data.indexOf(" "));
     if (t == "SERVER" && Object.keys(message).includes("temperature")) {
       console.log("TOPIC:", topic.toString());
