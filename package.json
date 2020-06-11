@@ -1,0 +1,17 @@
+{
+  "name": "smarthome-averager",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "damianrivas <drivas1993@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "private": true,
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "knex": "^0.21.1",
+    "mysql2": "^2.1.0",
+    "zeromq": "6"
+  }
+}

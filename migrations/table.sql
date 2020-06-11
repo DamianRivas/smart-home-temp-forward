@@ -1,0 +1,8 @@
+CREATE TABLE temps (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  temp DECIMAL(6,3) NOT NULL,
+  room_id INTEGER NOT NULL
+);
+
+INSERT INTO temps (temp, room_id)
+VALUES (75.2, 1);
