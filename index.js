@@ -34,6 +34,9 @@ async function run() {
         .insert({ temp: temperature, room_id })
         .then(() => {
           console.log("INSERTED INTO DB");
+        })
+        .catch((err) => {
+          console.error("ERROR:", err);
         });
     }
   }
