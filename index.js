@@ -27,7 +27,7 @@ async function run() {
 
     let message = data.substr(data.indexOf(" ") + 1);
     console.log("MESSAGE pre-JSON:", message);
-    if (message && message.keys.length) {
+    if (message && message.keys && message.keys.length) {
       message = JSON.parse(message);
 
       const t = data.substr(0, data.indexOf(" "));
